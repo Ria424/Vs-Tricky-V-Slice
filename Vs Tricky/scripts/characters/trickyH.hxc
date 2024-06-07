@@ -1,30 +1,26 @@
 import flixel.FlxG;
 import flixel.FlxSprite;
 import funkin.Paths;
-import funkin.play.character.BaseCharacter;
+import funkin.graphics.FunkinSprite;
 import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.GameOverSubState;
 import funkin.play.PlayState;
-import funkin.graphics.FunkinSprite;
 
-import funkin.play.character.CharacterDataParser;
-import funkin.play.character.CharacterType;
-
-class HellClownChar extends MultiSparrowCharacter {
+class TrickyHellclownCharacter extends MultiSparrowCharacter {
 	function new() {
-		super('trickyH');
+		super("trickyH");
 	}
 
 	function onCreate(event:ScriptEvent) {
-		FunkinSprite.cacheTexture(Paths.image('characters/Tricky/Left'));
-		FunkinSprite.cacheTexture(Paths.image('characters/Tricky/Right'));
-		FunkinSprite.cacheTexture(Paths.image('characters/Tricky/Down'));
-		FunkinSprite.cacheTexture(Paths.image('characters/Tricky/Up'));
+		FunkinSprite.cacheTexture(Paths.image("characters/Tricky/Left"));
+		FunkinSprite.cacheTexture(Paths.image("characters/Tricky/Down"));
+		FunkinSprite.cacheTexture(Paths.image("characters/Tricky/Up"));
+		FunkinSprite.cacheTexture(Paths.image("characters/Tricky/Right"));
 
 		super.onCreate(event);
 
-		GameOverSubState.musicSuffix = 'Trickster';
-		GameOverSubState.blueBallSuffix = '-sign';
+		GameOverSubState.musicSuffix = "Trickster";
+		GameOverSubState.blueBallSuffix = "-sign";
 	}
 
 	function onUpdate(event:ScriptEvent) {

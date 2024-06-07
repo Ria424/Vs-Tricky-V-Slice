@@ -1,25 +1,16 @@
-import flixel.FlxG;
-import flixel.FlxSprite;
-import funkin.Paths;
 import funkin.play.character.MultiSparrowCharacter;
-import funkin.play.GameOverSubState;
-import funkin.play.PlayState;
 
-class ExpurgationChar extends MultiSparrowCharacter {
+class TrickyExpurgationCharacter extends MultiSparrowCharacter {
 	function new() {
-		super('exTricky');
+		super("exTricky");
 	}
 
 	function onNoteHit(event:HitNoteScriptEvent) {
 		super.onNoteHit(event);
 
-    	if (event.judgement == "perfect") {
-			switch(event.note.kind) {
-				case "exHank":
-					holdTimer = 0;
-					this.playAnimation('Hank', true);
-					return;
-			}
+		if (event.judgement == "perfect" && event.note.kind == "exHank") {
+			this.holdTimer = 0;
+			this.playAnimation("Hank", true);
 		}
 	}
 }

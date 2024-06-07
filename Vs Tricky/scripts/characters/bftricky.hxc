@@ -1,25 +1,19 @@
-import flixel.FlxG;
+import funkin.graphics.FunkinSprite;
 import funkin.Paths;
 import funkin.play.character.MultiSparrowCharacter;
 import funkin.play.GameOverSubState;
-import funkin.graphics.FunkinSprite;
-import funkin.play.PlayState;
 
-class BFPreloadDeath extends MultiSparrowCharacter {
+class BFTrickyCharacter extends MultiSparrowCharacter {
 	function new() {
-		super('bftricky');
+		super("bftricky");
 	}
-	
+
 	function onCreate(event:ScriptEvent) {
-		FunkinSprite.cacheTexture(Paths.image('characters/signDeath'));
+		FunkinSprite.cacheTexture(Paths.image("characters/signDeath"));
 
 		super.onCreate(event);
 
-		GameOverSubState.musicSuffix = 'Trickster';
-		GameOverSubState.blueBallSuffix = '-sign';
-	}
-
-	function onUpdate(event:ScriptEvent) {
-		super.onUpdate(event);
+		GameOverSubState.musicSuffix = "Trickster";
+		GameOverSubState.blueBallSuffix = "-sign";
 	}
 }
