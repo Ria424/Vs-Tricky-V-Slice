@@ -11,8 +11,10 @@
   },
   "playData": {
     "songVariations": [    ],
-    "difficulties": ["normal"],
-      "characters": {
+    "difficulties": [
+      "hard"
+    ],
+    "characters": {
       "player": "bftricky",
       "girlfriend": "gftied",
       "opponent": "exTricky",
@@ -21,11 +23,13 @@
     },
     "stage": "auditorHell",
     "noteStyle": "item",
-    "ratings": {"normal": 15},
+    "ratings": {
+      "hard": 15
+    },
     "previewStart": 0,
     "previewEnd": 0
   },
-  "generatedBy": "Friday Night Funkin' - v0.3.2",
+  "generatedBy": "Friday Night Funkin' - v0.3.3",
   "timeFormat": "ms",
   "timeChanges": [
     {
