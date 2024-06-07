@@ -2,7 +2,7 @@
 	"version": "1.0.0",
 	"name": "Boyfriend (Tricky)",
 	"renderType": "multisparrow",
-	"assetPath": "characters/BF",
+	"assetPath": "characters/BOYFRIEND",
 	"healthIcon": {
 		"id": "bf"
 	},
@@ -76,14 +76,13 @@
 		},
 		{
 			"name": "cheer",
-			"prefix": "Cheer",
 			"assetPath": "characters/BFCheer",
+			"prefix": "Cheer",
 			"offsets": [0, 0]
 		},
 		{
 			"name": "hit",
 			"prefix": "BF hit",
-			"assetPath": "characters/BOYFRIEND",
 			"offsets": [0, 0]
 		},
 		{
