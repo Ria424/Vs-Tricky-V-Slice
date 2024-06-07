@@ -1,203 +1,76 @@
 {
 	"version": "1.0.0",
-	"renderType": "multisparrow",
-	"offsets": [
-		0,
-		0
-	],
-	"danceEvery": 1,
-	"scale": 1,
 	"name": "Boyfriend (Hellclown)",
-	"flipX": true,
-	"cameraOffsets": [
-		0,
-		0
-	],
-	"singTime": 8,
-	"startingAnimation": "idle",
-	"isPixel": false,
-	"healthIcon": {
-		"isPixel": false,
-		"offsets": [
-			0,
-			0
-		],
-		"scale": 1,
-		"id": "bf",
-		"flipX": false
-	},
+	"renderType": "multisparrow",
 	"assetPath": "characters/BF_3rd_phase",
+	"healthIcon": {
+		"id": "bf"
+	},
+	"singTime": 8,
+	"flipX": true,
 	"animations": [
 		{
-			"flipY": false,
-			"offsets": [
-				-5,
-				0
-			],
-			"frameRate": 24,
+			"name": "idle",
 			"prefix": "BF idle dance",
-			"flipX": false,
-			"looped": false,
-			"name": "idle"
+			"offsets": [-5, 0]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				-29,
-				27
-			],
-			"frameRate": 24,
-			"prefix": "BF NOTE UP0",
-			"flipX": false,
-			"looped": false,
-			"name": "singUP"
-		},
-		{
-			"flipY": false,
-			"offsets": [
-				12,
-				-6
-			],
-			"frameRate": 24,
+			"name": "singLEFT",
 			"prefix": "BF NOTE LEFT0",
-			"flipX": false,
-			"looped": false,
-			"name": "singLEFT"
+			"offsets": [12, -6]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				-38,
-				-7
-			],
-			"frameRate": 24,
-			"prefix": "BF NOTE RIGHT0",
-			"flipX": false,
-			"looped": false,
-			"name": "singRIGHT"
-		},
-		{
-			"flipY": false,
-			"offsets": [
-				-10,
-				-50
-			],
-			"frameRate": 24,
+			"name": "singDOWN",
 			"prefix": "BF NOTE DOWN0",
-			"flipX": false,
-			"looped": false,
-			"name": "singDOWN"
+			"offsets": [-10, -50]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				-29,
-				27
-			],
-			"frameRate": 24,
-			"prefix": "BF NOTE UP MISS",
-			"flipX": false,
-			"looped": false,
-			"name": "singUPmiss"
+			"name": "singUP",
+			"prefix": "BF NOTE UP0",
+			"offsets": [-29, 27]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				12,
-				24
-			],
-			"frameRate": 24,
+			"name": "singRIGHT",
+			"prefix": "BF NOTE RIGHT0",
+			"offsets": [-38, -7]
+		},
+		{
+			"name": "singLEFTmiss",
 			"prefix": "BF NOTE LEFT MISS",
-			"flipX": false,
-			"looped": false,
-			"name": "singLEFTmiss"
+			"offsets": [12, 24]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				-30,
-				21
-			],
-			"frameRate": 24,
-			"prefix": "BF NOTE RIGHT MISS",
-			"flipX": false,
-			"looped": false,
-			"name": "singRIGHTmiss"
-		},
-		{
-			"flipY": false,
-			"offsets": [
-				-11,
-				-19
-			],
-			"frameRate": 24,
+			"name": "singDOWNmiss",
 			"prefix": "BF NOTE DOWN MISS",
-			"flipX": false,
-			"looped": false,
-			"name": "singDOWNmiss"
+			"offsets": [-11, -19]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				-4,
-				0
-			],
-			"frameRate": 24,
-			"prefix": "BF idle shaking",
-			"flipX": false,
-			"looped": false,
-			"name": "scared"
+			"name": "singUPmiss",
+			"prefix": "BF NOTE UP MISS",
+			"offsets": [-29, 27]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				0,
-				0
-			],
-			"frameRate": 24,
-			"prefix": "BF hit",
-			"flipX": false,
-			"looped": false,
-			"name": "stunned"
+			"name": "singRIGHTmiss",
+			"prefix": "BF NOTE RIGHT MISS",
+			"offsets": [-30, 21]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				429,
-				46
-			],
-			"frameRate": 24,
+			"name": "firstDeath",
 			"assetPath": "characters/signDeath",
 			"prefix": "BF dies",
-			"flipX": false,
-			"looped": false,
-			"name": "firstDeath"
+			"offsets": [429, 46]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				168,
-				46
-			],
-			"frameRate": 24,
+			"name": "deathLoop",
 			"assetPath": "characters/signDeath",
 			"prefix": "BF Dead Loop",
-			"flipX": false,
-			"looped": false,
-			"name": "deathLoop"
+			"offsets": [168, 46]
 		},
 		{
-			"flipY": false,
-			"offsets": [
-				167,
-				93
-			],
-			"frameRate": 24,
+			"name": "deathConfirm",
 			"assetPath": "characters/signDeath",
 			"prefix": "BF Dead confirm",
-			"flipX": false,
-			"looped": false,
-			"name": "deathConfirm"
+			"offsets": [167, 93]
 		}
 	]
 }
