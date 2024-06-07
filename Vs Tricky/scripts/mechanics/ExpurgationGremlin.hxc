@@ -6,60 +6,27 @@ import flixel.util.FlxTimer;
 import funkin.audio.FunkinSound;
 import funkin.graphics.FunkinSprite;
 import funkin.Paths;
-import funkin.play.event.SongEvent;
 import funkin.play.PlayState;
 import funkin.Preferences;
+import funkin.modding.module.Module;
 
-class ExpurgationGremlin extends SongEvent {
+class ExpurgationGremlin extends Module {
+	var mustStop:Bool = false;
+	var theDuration:Int; // why
+
 	public function new() {
 		super("ExpurgationGremlin");
 	}
 
-	public override function handleEvent(data:SongEventData) {
-		if (PlayState.instance == null || PlayState.instance.currentStage == null)
-			return;
-
-		doGremlin(data.value.hpToTake, data.value.duration, data.value.persist);
-
-		PlayState.instance.currentStage.refresh();
+	function onCreate(event:ScriptEvent) {
+		FunkinSprite.cacheTexture(Paths.image("mechanics/HP GREMLIN"));
 	}
 
-	public function getEventSchema() {
-		return [
-			{
-				name: "hpToTake",
-				title: "Hp To Take",
-				defaultValue: 1,
-				step: 1,
-				type: "integer"
-			},
-			{
-				name: "duration",
-				title: "Duration in seconds",
-				defaultValue: 1,
-				step: 1,
-				type: "integer"
-			},
-			{
-				name: "persist",
-				title: "Persist",
-				type: "bool",
-				defaultValue: false
-			}
-		];
-	}
-
-	public function getTitle() {
-		return "Expurgation Gremlin";
-	}
-
-	var theDuration:Int = 0; // i had to do this for some fucking reason
-	var daTotalDamage:Float = 0; // i had to do this for some fucking reason
-
-	function doGremlin(hpToTake:Int, duration:Int, /* lolol we dont need that shit ----> */ persist:Bool = false):Void {
+	public function appear(hpToTake:Int, duration:Int):Void {
 		theDuration = duration;
+		mustStop = false;
 
-		var gramlan:FunkinSprite = FunkinSprite.createSparrow(0, 0,"mechanics/HP GREMLIN");
+		var gramlan:FunkinSprite = FunkinSprite.createSparrow(0, 0, "mechanics/HP GREMLIN");
 		gramlan.setGraphicSize(Std.int(gramlan.width * 0.76));
 		gramlan.cameras = [PlayState.instance.camHUD];
 		gramlan.zIndex = 1500;
@@ -94,19 +61,27 @@ class ExpurgationGremlin extends SongEvent {
 			gramlan.animation.play("grab");
 			FlxTween.tween(gramlan, {x: PlayState.instance.iconP1.x - 140}, 1, {
 				ease: FlxEase.elasticIn,
-				onComplete: function(tween:FlxTween) {
+				onComplete: function(tween1:FlxTween) {
 					gramlan.animation.play("hold");
 					FlxTween.tween(
 						gramlan, {
 							x: (PlayState.instance.healthBar.x + (PlayState.instance.healthBar.width * (FlxMath.remapToRange(perct, 0, 100, 100, 0) * 0.01) - 26)) - 75
 						}, theDuration, {
-							onUpdate: function(tween:FlxTween) {
-								var pp = FlxMath.lerp(startHealth, toHealth, tween.percent);
-								if (pp <= 0)
-									pp = 0.1;
-								PlayState.instance.health = pp;
+							onUpdate: function(tween2:FlxTween) {
+								if (mustStop) {
+									gramlan.animation.play("release");
+									gramlan.animation.finishCallback = function(pog:String) {
+										gramlan.visible = false;
+										tween2.cancel();
+									}
+								} else {
+									var pp = FlxMath.lerp(startHealth, toHealth, tween2.percent);
+									if (pp <= 0)
+										pp = 0.1;
+									PlayState.instance.health = pp;
+								}
 							},
-							onComplete: function(tween:FlxTween) {
+							onComplete: function(tween2:FlxTween) {
 								gramlan.animation.play("release");
 								gramlan.animation.finishCallback = function(pog:String) {
 									PlayState.instance.remove(gramlan);
@@ -117,5 +92,9 @@ class ExpurgationGremlin extends SongEvent {
 				}
 			});
 		});
+	}
+
+	public function disappear():Void {
+		mustStop = true;
 	}
 }

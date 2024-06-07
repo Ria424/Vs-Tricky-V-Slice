@@ -1,0 +1,50 @@
+import flixel.FlxG;
+import funkin.graphics.FunkinSprite;
+import funkin.modding.module.Module;
+import funkin.Paths;
+import funkin.play.PlayState;
+
+class ExpurgationSign extends Module {
+	public function new() {
+		super("ExpurgationSign");
+	}
+
+	function onCreate(event:ScriptEvent) {
+		FunkinSprite.cacheTexture(Paths.image("mechanics/Sign_Post_Mechanic"));
+	}
+
+	public function appear(signType:Int = 0, flipX:Bool = false):Void {
+		var sign:FunkinSprite = FunkinSprite.createSparrow(0, 0, "mechanics/Sign_Post_Mechanic");
+		sign.setGraphicSize(Std.int(sign.width * 0.67));
+		sign.cameras = [PlayState.instance.camHUD];
+    	sign.zIndex = 1500;
+
+		switch (signType) {
+			case 0:
+				sign.animation.addByPrefix("sign", "Signature Stop Sign 1", 24, false);
+				sign.x = FlxG.width - 650;
+				sign.angle = -90;
+				sign.y = -300;
+			case 1:
+				sign.animation.addByPrefix("sign", "Signature Stop Sign 3", 24, false);
+				sign.x = FlxG.width - 780;
+				sign.angle = -90;
+				if (FlxG.save.data.downscroll)
+					sign.y = -395;
+				else
+					sign.y = -980;
+			case 2:
+				sign.animation.addByPrefix("sign", "Signature Stop Sign 4", 24, false);
+				sign.x = FlxG.width - 1070;
+				sign.angle = -90;
+				sign.y = -145;
+		}
+
+		PlayState.instance.add(sign);
+		sign.flipX = flipX;
+		sign.animation.play("sign");
+		sign.animation.finishCallback = function(pog:String) {
+			PlayState.instance.remove(sign);
+		}
+	}
+}
