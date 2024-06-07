@@ -1,15 +1,13 @@
 import funkin.ui.story.Level;
-import flixel.FlxG;
 
 class ExLevel extends Level {
 	function new() {
-		super('expurgation');
+		super("expurgation");
 	}
 
 	override public function isUnlocked() {
 		super.isUnlocked();
 
-		return Save.instance.hasBeatenLevel('clown');
+		return Save.instance.hasBeatenLevel("clown");
 	}
-
 }
