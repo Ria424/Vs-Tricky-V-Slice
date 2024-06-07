@@ -16,4 +16,9 @@ class BFHellCharacter extends MultiSparrowCharacter {
 		GameOverSubState.musicSuffix = "Trickster";
 		GameOverSubState.blueBallSuffix = "-sign";
 	}
+
+	function onNoteMiss(event:NoteScriptEvent) {
+		if (event.note.noteData.kind != "trickyhell" && event.note.noteData.kind != "trickydeath")
+			super.onNoteMiss(event);
+	}
 }
